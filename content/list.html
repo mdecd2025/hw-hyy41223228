@@ -2,7 +2,7 @@
         <head>
         <title>cd_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -142,15 +142,93 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Exam3 << <a href='Exam3.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>Final</h1>
-<p><span>期末協同專案執行過程影片、簡報與 PDf 報告檔案 (六人一組) (30%)</span></p>
-<p><span>題目: <span style="background-color: #ccffcc;">Webots 動態投籃模擬系統的協同設計</span></span></p>
-<p><span>說明: </span></p>
-<p style="padding-left: 30px;"><span>籃框架被配置在一定範圍內, 可隨機慢速前進、後退及左右擺動, 投籃機構系統帶有一定數量的籃球, 被配置在可自由移動的輪車上.</span></p>
-<p style="padding-left: 30px;"><span>操作者可利用鍵盤特定按鍵控制投籃輪車的移動並發射投籃, 每投出一球後系統透過記分板進行計分, 並由送球機構進行補球或移動輪車取球, 遊戲可進行至全部數量籃球投完為止.</span></p>
-<p>請將期末協同專案執行過程、內容與心得, 製作成影片，配合字幕上傳至 Youtube 後嵌入各階段的期末報告頁面中.</p>
-<p>影片標題: <span style="background-color: #ffff00;">國立虎尾科技大學 - 機械設計工程系 - cd2025 期末報告 - 學員學號 - 各階段影片主題<br/></span></p>
-<br />Exam3 << <a href='Exam3.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+    <div id="tipue_search_content">task1 << <a href='task1.html'>Previous</a> <a href='task2.html'>Next</a> >> task2<br /><h1>list</h1>
+<p><a href="https://mdecd2025.github.io/hw-hyy41223228/content/Brython.html?src=https://gist.githubusercontent.com/hyy41223228/cbd3cf1ef4ac72eb323a0016ac0e9d2e/raw/10edbf9c479803eb80b97305b1dcc704247fbecb/41223228g3">g3成員</a></p>
+<p>查找g3成員的github頁面超鏈接和作業網站超鏈接</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document, window
+
+# 定義資料來源 URL
+url = "https://mde.tw/list/2b.txt"
+
+# 定義要查找的學號列表
+target_ids = ["41223226", "41223228", "41223206", "41223235", "41223227", "41223215"]
+
+# 顯示學員總數
+print("正在處理學員資料...")
+
+# 取得 HTML 中的元素 id 為 "brython_div1"
+brython_div1 = document["brython_div1"]
+
+# 使用 JavaScript 的 fetch API 來抓取資料
+def process_data(response_text):
+    # 將抓取到的資料分行
+    data = response_text.splitlines()
+
+    # 跳過標題行，取得學員資料
+    all_stud = data[1:]
+
+    # 逐行處理學員資料
+    for stud in all_stud:
+        # 假設學員資料的格式為 "學號 學員賬號"
+        student_info = stud.strip().split()  # 使用 split() 將每行分為學號和帳號
+        if len(student_info) == 2:  # 確保每行有學號和帳號
+            student_id = student_info[0].strip()  # 學號
+            student_account = student_info[1].strip()  # 學員賬號
+
+            # 檢查學號是否在目標學號列表中
+            if student_id in target_ids:
+                # 創建 GitHub 和作業網站的超鏈接
+                github_link = f"https://github.com/mdecd2025/hw-{student_account}"
+                homework_link = f"https://mdecd2025.github.io/hw-{student_account}/"
+                
+                # 顯示該學號的 GitHub 和作業網站
+                brython_div1 &lt;= html.A(student_id, href=github_link)  # 學號是 GitHub repo 連結
+                brython_div1 &lt;= " "  # 空格
+                brython_div1 &lt;= html.A("(repo)", href=homework_link)  # 作業網站的超鏈接標題為 (repo)
+                brython_div1 &lt;= html.BR()  # 換行
+
+# 使用 JavaScript 的 fetch API 拉取資料
+window.fetch(url).then(lambda response: response.text()).then(process_data)</pre>
+<p><a href="https://www.youtube.com/watch?v=Pa0trAHisoI&amp;ab_channel=hadog">詢問gpt製作程式影片</a><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Pa0trAHisoI" width="560"></iframe><br/><br/></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document
+
+# 定義資料來源 URL
+url = "https://mde.tw/list/2b.txt"
+
+# 讀取資料
+data = open(url).readlines()
+
+# 跳過標題行，取得學員資料
+all_stud = data[1:]
+
+# 顯示學員總數
+print("總共有 " + str(len(all_stud)) + "名學員")
+
+# 取得 HTML 中的元素 id 為 "brython_div1"
+brython_div1 = document["brython_div1"]
+
+# 逐行處理學員資料
+for stud in all_stud:
+    # 假設學員資料的格式為 "學號 學員賬號"
+    student_info = stud.strip().split()  # 使用 split() 將每行分為學號和帳號
+    if len(student_info) == 2:  # 確保每行有學號和帳號
+        student_id = student_info[0].strip()  # 學號
+        student_account = student_info[1].strip()  # 學員賬號
+
+        # 創建 GitHub 和作業網站的超鏈接
+        github_link = f"https://github.com/mdecd2025/hw-{student_account}"
+        homework_link = f"https://mdecd2025.github.io/hw-{student_account}/"
+        
+        # 將學號作為 GitHub repository 的鏈接
+        brython_div1 &lt;= html.A(student_id, href=github_link)  # 學號是 GitHub repo 連結
+        brython_div1 &lt;= " "  # 空格
+        
+        # 插入作業網站的超鏈接，標題改為 "(repo)"
+        brython_div1 &lt;= html.A("(repo)", href=homework_link)  # 作業網站的超鏈接標題為 (repo)
+        
+        # 插入換行
+        brython_div1 &lt;= html.BR()  # 換行</pre>
+<p>查找學員github超鏈接</p><br />task1 << <a href='task1.html'>Previous</a> <a href='task2.html'>Next</a> >> task2</div>
         
     <!-- footer -->
       <div class="container">
