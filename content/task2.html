@@ -111,14 +111,14 @@ img.add_border {
             <header class="site-navbar py-4 bg-white" role="banner">
               <div class="container">
                 <div class="row align-items-center">
-                <h1>cd2025 協同產品設計實習學員網站</h1>
+                <h1>cd2025 協同產品設計實習41223228網站</h1>
                 <div class="pl-4">
                     <form>
                     <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
                     </form>
                 </div>
                   <!-- <div class="col-11 col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">cd2025 協同產品設計實習學員網站</a></h1> 
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">cd2025 協同產品設計實習41223228網站</a></h1> 
                   </div>
                   -->
                   <div class="col-12 col-md-10 d-none d-xl-block">
@@ -143,7 +143,55 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">list << <a href='list.html'>Previous</a> <a href='task3.html'>Next</a> >> task3<br /><h1>task2</h1>
-<br />list << <a href='list.html'>Previous</a> <a href='task3.html'>Next</a> >> task3</div>
+<p><a href="https://mdecd2025.github.io/hw-hyy41223228/content/Brython.html?src=https://gist.githubusercontent.com/hyy41223228/cd94e0a1db2aa0734d0b70ab190188b9/raw/49da233d438f0a21b9c5622160b2627c6e3ab220/gistfile1.txt">任務一運行結果</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+
+# 學號列表（從您提供的文件複製）
+student_numbers = [
+    "40923137", "41023114", "41023205", "41023206", "41023210",
+    "41023213", "41023215", "41023216", "41023218", "41023232",
+    "41023237", "41071202", "41071203", "41071204", "41223201",
+    "41223202", "41223203", "41223205", "41223206", "41223207",
+    "41223208", "41223209", "41223210", "41223211", "41223212",
+    "41223214", "41223215", "41223216", "41223217", "41223218",
+    "41223219", "41223220", "41223221", "41223222", "41223223",
+    "41223224", "41223225", "41223226", "41223227", "41223228",
+    "41223229", "41223230", "41223231", "41223232", "41223233",
+    "41223234", "41223235", "41223236", "41223237", "41223239",
+    "41223240", "41223242", "41223243", "41223244", "41223245",
+    "41223246", "41223247", "41223248", "41223249", "41223250",
+    "41223251", "41223252", "41223253", "41271217", "41271236",
+    "41271237"
+]
+
+# 創建學員連結列表
+def create_student_links():
+    div = document["brython_div1"]
+    div.clear()  # 清空既有內容
+    
+    # 基本 IPv6 位址格式
+    base_ipv6 = "2001:288:6004:17:fff1:cd25:0000:b"
+    port = "8000"
+    
+    # 使用學號生成連結
+    for i, student_id in enumerate(student_numbers, 1):  # 從 1 開始計數
+        # 格式化序號為三位數 (001-066)
+        student_num = f"{i:03d}"
+        # 完整的 IPv6 位址
+        ipv6_addr = f"{base_ipv6}{student_num}"
+        # 完整的 URL
+        url = f"http://[{ipv6_addr}]:{port}"
+        
+        # 使用學號作為顯示文字
+        link = html.A(student_id, href=url, target="_blank")
+        # 每個連結後添加換行
+        div &lt;= link
+        div &lt;= html.BR()
+
+# 執行函數
+create_student_links()
+</pre>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/2XTaAyHvc78" width="560"></iframe></p><br />list << <a href='list.html'>Previous</a> <a href='task3.html'>Next</a> >> task3</div>
         
     <!-- footer -->
       <div class="container">
