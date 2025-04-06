@@ -2,7 +2,7 @@
         <head>
         <title>cd_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -142,11 +142,54 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW2 << <a href='HW2.html'>Previous</a> <a href='Midterm.html'>Next</a> >> Midterm<br /><h1>HW3</h1>
-<p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW3 - 學員學號</p>
-<p></p>
-<br />HW2 << <a href='HW2.html'>Previous</a> <a href='Midterm.html'>Next</a> >> Midterm</div>
+    <div id="tipue_search_content">task2 << <a href='task2.html'>Previous</a> <a href='task3.html'>Next</a> >> task3<br /><h1>w3</h1>
+<p><span>列出目前尚未納入分組的學員名單.</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document, window
+
+# 資料來源
+url = "https://mde.tw/list/2b.txt"
+
+# 已分組 GitHub 帳號清單
+grouped_accounts = {
+    '41223251', '41223211', '41223245', '41223243', 'jjjay41223212', 'leeshaowei0716',
+    '41223234', '41223209', '41223205', '41223201', '41223202', '41223208-hw',
+    '41223216', '41223217', '41223248', 'emma0312', '41223242', '41223203',
+    '41223144', '41223235', 'RAY41223215', 'hyy41223228', '41223227', '41223206',
+    '41223226-0', 'Cloud41223237', 'Yujenchuang', '41223225', 'ljg41223220',
+    'supowen', 'jacky93111', '41223246', 'Liu41223244', '41223236', '41223219',
+    '41271237', '41223249', '41223229', '41223224', '41223222', '41223231',
+    'linryan23', '41023114', '41223230', 'timluo123', 'CYC41223247', '41223218',
+    'ych0227', '41023215', '41023216', '41023213', '41071203', '41071204',
+    '41071202', 'c-ching', 'YUN4', 'tseYU000', 'snowfall-killer', 'junpig10'
+}
+
+brython_div1 = document["brython_div1"]
+
+def process_data(response_text):
+    data = response_text.splitlines()
+    all_stud = data[1:]
+
+    for stud in all_stud:
+        student_info = stud.strip().split()
+
+        if len(student_info) == 2:
+            student_id = student_info[0].strip()
+            student_account = student_info[1].strip()
+
+            # 帳號不在已分組名單 → 尚未分組
+            if student_account not in grouped_accounts:
+                brython_div1 &lt;= student_id
+                brython_div1 &lt;= html.BR()
+
+        elif len(student_info) == 1:
+            # 沒有帳號的直接列出
+            student_id = student_info[0].strip()
+            brython_div1 &lt;= student_id
+            brython_div1 &lt;= html.BR()
+
+window.fetch(url).then(lambda response: response.text()).then(process_data)
+</pre>
+<p></p><br />task2 << <a href='task2.html'>Previous</a> <a href='task3.html'>Next</a> >> task3</div>
         
     <!-- footer -->
       <div class="container">

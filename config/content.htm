@@ -111,7 +111,8 @@ for stud in all_stud:
         # 插入換行
         brython_div1 &lt;= html.BR()  # 換行</pre>
 <p>查找學員github超鏈接</p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/P6JJUlHAAwU" width="560"></iframe></p><h2>task2</h2>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/P6JJUlHAAwU" width="560"></iframe></p>
+<h2>task2</h2>
 <p><a href="https://mdecd2025.github.io/hw-hyy41223228/content/Brython.html?src=https://gist.githubusercontent.com/hyy41223228/cd94e0a1db2aa0734d0b70ab190188b9/raw/49da233d438f0a21b9c5622160b2627c6e3ab220/gistfile1.txt">任務一運行結果</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
 
@@ -160,12 +161,62 @@ def create_student_links():
 # 執行函數
 create_student_links()
 </pre>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/2XTaAyHvc78" width="560"></iframe></p><h2>task3</h2>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/2XTaAyHvc78" width="560"></iframe></p>
+<h3>w3</h3>
+<p><span>列出目前尚未納入分組的學員名單.</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document, window
+
+# 資料來源
+url = "https://mde.tw/list/2b.txt"
+
+# 已分組 GitHub 帳號清單
+grouped_accounts = {
+    '41223251', '41223211', '41223245', '41223243', 'jjjay41223212', 'leeshaowei0716',
+    '41223234', '41223209', '41223205', '41223201', '41223202', '41223208-hw',
+    '41223216', '41223217', '41223248', 'emma0312', '41223242', '41223203',
+    '41223144', '41223235', 'RAY41223215', 'hyy41223228', '41223227', '41223206',
+    '41223226-0', 'Cloud41223237', 'Yujenchuang', '41223225', 'ljg41223220',
+    'supowen', 'jacky93111', '41223246', 'Liu41223244', '41223236', '41223219',
+    '41271237', '41223249', '41223229', '41223224', '41223222', '41223231',
+    'linryan23', '41023114', '41223230', 'timluo123', 'CYC41223247', '41223218',
+    'ych0227', '41023215', '41023216', '41023213', '41071203', '41071204',
+    '41071202', 'c-ching', 'YUN4', 'tseYU000', 'snowfall-killer', 'junpig10'
+}
+
+brython_div1 = document["brython_div1"]
+
+def process_data(response_text):
+    data = response_text.splitlines()
+    all_stud = data[1:]
+
+    for stud in all_stud:
+        student_info = stud.strip().split()
+
+        if len(student_info) == 2:
+            student_id = student_info[0].strip()
+            student_account = student_info[1].strip()
+
+            # 帳號不在已分組名單 → 尚未分組
+            if student_account not in grouped_accounts:
+                brython_div1 &lt;= student_id
+                brython_div1 &lt;= html.BR()
+
+        elif len(student_info) == 1:
+            # 沒有帳號的直接列出
+            student_id = student_info[0].strip()
+            brython_div1 &lt;= student_id
+            brython_div1 &lt;= html.BR()
+
+window.fetch(url).then(lambda response: response.text()).then(process_data)
+</pre>
+<p></p><h2>task3</h2>
 <h4>使用 Solvespace 建立平面四連桿系統零組件</h4>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/EhMxBjHIhf4" width="560"></iframe></p>
-<p><a href="/downloads/篮球四连杆机构.7z">連桿機構檔案</a></p><h2>task4</h2>
+<p><a href="/downloads/篮球四连杆机构.7z">連桿機構檔案</a></p>
+<h2>task4</h2>
 <h2>task5</h2>
-<h2>task6</h2><h1>Homework</h1>
+<h2>task6</h2>
+<h1>Homework</h1>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p style="padding-left: 30px;">part1:</p>
@@ -202,7 +253,8 @@ create_student_links()
 <p><span style="background-color: #ffff00;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/skI-7qo2c3c" width="560"></iframe></span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Df9G7ArYnLE" width="560"></iframe></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW2 - 學員學號</p>
-<p></p><h2>HW3</h2>
+<p></p>
+<h2>HW3</h2>
 <p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW3 - 學員學號</p>
 <p></p>
