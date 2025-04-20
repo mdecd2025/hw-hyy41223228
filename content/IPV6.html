@@ -2,7 +2,7 @@
         <head>
         <title>cd_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -142,14 +142,57 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW1 << <a href='HW1.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3<br /><h1>HW2</h1>
-<p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p><span style="background-color: #ffff00;"></span></p>
-<p><span style="background-color: #ffff00;"></span></p>
-<p></p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW2 - 學員學號</p>
-<p></p>
-<br />HW1 << <a href='HW1.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3</div>
+    <div id="tipue_search_content">wink << <a href='wink.html'>Previous</a> <a href='task1.html'>Next</a> >> task1<br /><h1>IPV6</h1>
+<p><a href="https://mdecd2025.github.io/hw-hyy41223228/content/Brython.html?src=https://gist.githubusercontent.com/hyy41223228/cd94e0a1db2aa0734d0b70ab190188b9/raw/49da233d438f0a21b9c5622160b2627c6e3ab220/gistfile1.txt">任務一運行結果</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+
+# 學號列表（從您提供的文件複製）
+student_numbers = [
+    "40923137", "41023114", "41023205", "41023206", "41023210",
+    "41023213", "41023215", "41023216", "41023218", "41023232",
+    "41023237", "41071202", "41071203", "41071204", "41223201",
+    "41223202", "41223203", "41223205", "41223206", "41223207",
+    "41223208", "41223209", "41223210", "41223211", "41223212",
+    "41223214", "41223215", "41223216", "41223217", "41223218",
+    "41223219", "41223220", "41223221", "41223222", "41223223",
+    "41223224", "41223225", "41223226", "41223227", "41223228",
+    "41223229", "41223230", "41223231", "41223232", "41223233",
+    "41223234", "41223235", "41223236", "41223237", "41223239",
+    "41223240", "41223242", "41223243", "41223244", "41223245",
+    "41223246", "41223247", "41223248", "41223249", "41223250",
+    "41223251", "41223252", "41223253", "41271217", "41271236",
+    "41271237"
+]
+
+# 創建學員連結列表
+def create_student_links():
+    div = document["brython_div1"]
+    div.clear()  # 清空既有內容
+    
+    # 基本 IPv6 位址格式
+    base_ipv6 = "2001:288:6004:17:fff1:cd25:0000:b"
+    port = "8000"
+    
+    # 使用學號生成連結
+    for i, student_id in enumerate(student_numbers, 1):  # 從 1 開始計數
+        # 格式化序號為三位數 (001-066)
+        student_num = f"{i:03d}"
+        # 完整的 IPv6 位址
+        ipv6_addr = f"{base_ipv6}{student_num}"
+        # 完整的 URL
+        url = f"http://[{ipv6_addr}]:{port}"
+        
+        # 使用學號作為顯示文字
+        link = html.A(student_id, href=url, target="_blank")
+        # 每個連結後添加換行
+        div &lt;= link
+        div &lt;= html.BR()
+
+# 執行函數
+create_student_links()
+</pre>
+<p><br/><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/2XTaAyHvc78" width="560"></iframe><span></span></p>
+<br />wink << <a href='wink.html'>Previous</a> <a href='task1.html'>Next</a> >> task1</div>
         
     <!-- footer -->
       <div class="container">
