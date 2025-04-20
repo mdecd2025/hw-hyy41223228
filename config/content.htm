@@ -13,6 +13,44 @@
 <p style="padding-left: 30px;">Exam (40%) - 建立包含操作流程影片、心得以及提供檔案下載的網頁後填回自評表單</p>
 <p style="padding-left: 30px;">Final Report (30%) - 利用網頁內容進行簡報並提交 pdf 格式書面報告, 完成後填回自評表單</p>
 <h2>repo</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document
+
+# 定義資料來源 URL
+url = "https://mde.tw/list/2b.txt"
+
+# 讀取資料
+data = open(url).readlines()
+
+# 跳過標題行，取得學員資料
+all_stud = data[1:]
+
+# 顯示學員總數
+print("總共有 " + str(len(all_stud)) + "名學員")
+
+# 取得 HTML 中的元素 id 為 "brython_div1"
+brython_div1 = document["brython_div1"]
+
+# 逐行處理學員資料
+for stud in all_stud:
+    # 假設學員資料的格式為 "學號 學員賬號"
+    student_info = stud.strip().split()  # 使用 split() 將每行分為學號和帳號
+    if len(student_info) == 2:  # 確保每行有學號和帳號
+        student_id = student_info[0].strip()  # 學號
+        student_account = student_info[1].strip()  # 學員賬號
+
+        # 創建 GitHub 和作業網站的超鏈接
+        github_link = f"https://github.com/mdecd2025/hw-{student_account}"
+        homework_link = f"https://mdecd2025.github.io/hw-{student_account}/"
+        
+        # 將學號作為 GitHub repository 的鏈接
+        brython_div1 &lt;= html.A(student_id, href=github_link)  # 學號是 GitHub repo 連結
+        brython_div1 &lt;= " "  # 空格
+        
+        # 插入作業網站的超鏈接，標題改為 "(repo)"
+        brython_div1 &lt;= html.A("(repo)", href=homework_link)  # 作業網站的超鏈接標題為 (repo)
+        
+        # 插入換行
+        brython_div1 &lt;= html.BR()  # 換行</pre>
 <h1>tasks</h1>
 <p>task1 與 task2 任務目的在建立可於近端維護個人作業與協同作業的準備工作:</p>
 <p>task1 (自行製作可攜程式系統)</p>
@@ -225,7 +263,8 @@ window.fetch(url).then(lambda response: response.text()).then(process_data)
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/skI-7qo2c3c" width="560"></iframe></p>
 <p>曲柄 30mm</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Df9G7ArYnLE" width="560"></iframe></p>
-<p><a href="/downloads/篮球四连杆机构.7z">連桿機構檔案</a></p><h2>task4</h2>
+<p><a href="/downloads/篮球四连杆机构.7z">連桿機構檔案</a></p>
+<h2>task4</h2>
 <h2>task5</h2>
 <h2>task6</h2>
 <h1>Homework</h1>
