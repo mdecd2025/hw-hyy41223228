@@ -144,7 +144,12 @@ img.add_border {
         </header>
     <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='task6.html'>Next</a> >> task6<br /><h1>w9</h1>
 <p><span>shooter導入webot</span></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/7d5zxNYK7U4" width="560"></iframe></p><br />w7 << <a href='w7.html'>Previous</a> <a href='task6.html'>Next</a> >> task6</div>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/7d5zxNYK7U4" width="560"></iframe></p>
+<p>過程 </p>
+<p>使用老師給的零件圖尺寸，利用<span>solvespace組裝轉出stl檔，stl檔利用老師的py檔轉成obj供webots使用</span></p>
+<p><span>打開webots 開起一個robot群組 在robot的children裡建立三個子群組solid當base 兩個hingejoint 一個當joint1檔連桿之間的定位和鎖固，一個當joint4讓連桿的群組和base的另一個軸連接。</span></p>
+<p><span>在joint1裡建立higejintparameters和solid 在solid裡開啟children建立cadshape用來開啟桿一的外形，再從solid裡開啟mesh開啟桿一的碰撞體積，在開啟phyaixs，開啟桿子的物理性質，讓馬達傳動時會跟著一起運動，在回到joint1的device裡開啟馬達。joint1的higejintparameters是控制joint1軸的位子以及角度，需要特別注意。</span></p>
+<p>後續一直到<span>joint4都是無限套娃除了馬達不用開其他都一樣，在最後joint4鏈接base的時候要特別注意使用的是solidreference鏈接桿3，要注意的是桿三要取名字。</span></p><br />w7 << <a href='w7.html'>Previous</a> <a href='task6.html'>Next</a> >> task6</div>
         
     <!-- footer -->
       <div class="container">

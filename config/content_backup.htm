@@ -515,7 +515,12 @@ try:
 <p><span>solvespace basket_ball_shooter繪製</span></p>
 <p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Q0rPn3WVvDY" width="560"></iframe></span></p><h3>w9</h3>
 <p><span>shooter導入webot</span></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/7d5zxNYK7U4" width="560"></iframe></p><h2>task6</h2>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/7d5zxNYK7U4" width="560"></iframe></p>
+<p>過程 </p>
+<p>使用老師給的零件圖尺寸，利用<span>solvespace組裝轉出stl檔，stl檔利用老師的py檔轉成obj供webots使用</span></p>
+<p><span>打開webots 開起一個robot群組 在robot的children裡建立三個子群組solid當base 兩個hingejoint 一個當joint1檔連桿之間的定位和鎖固，一個當joint4讓連桿的群組和base的另一個軸連接。</span></p>
+<p><span>在joint1裡建立higejintparameters和solid 在solid裡開啟children建立cadshape用來開啟桿一的外形，再從solid裡開啟mesh開啟桿一的碰撞體積，在開啟phyaixs，開啟桿子的物理性質，讓馬達傳動時會跟著一起運動，在回到joint1的device裡開啟馬達。joint1的higejintparameters是控制joint1軸的位子以及角度，需要特別注意。</span></p>
+<p>後續一直到<span>joint4都是無限套娃除了馬達不用開其他都一樣，在最後joint4鏈接base的時候要特別注意使用的是solidreference鏈接桿3，要注意的是桿三要取名字。</span></p><h2>task6</h2>
 <h1>Homework</h1>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
@@ -545,22 +550,36 @@ try:
 <p style="padding-left: 30px;"><img alt="" height="264" src="/images/fourbar_ball_throwing_linkage.gif" width="400"/></p>
 <h2>HW1</h2>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p><a href="/downloads/41223228 hw-1.7z">/downloads/41223228 hw-1.7z</a></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/sqQYrGttNcE" width="560"></iframe></p>
-<p></p>
-<h2>HW2</h2>
+<p><a href="/downloads/41223228 hw1 max.7z">/downloads/41223228 hw1 max.7z</a></p>
+<p><a href="/downloads/41223228%20hw1 max.7z"></a><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/sqQYrGttNcE" width="560"></iframe></p>
+<p>主要為base--&gt;joint1--&gt;link1--&gt;<span>joint2--&gt;link2--&gt;</span><span>joint3--&gt;link3--&gt;joint4</span></p>
+<p><span></span></p>
+<p><span></span></p><h2>HW2</h2>
 <p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW2 - 學員學號</p>
-<p><a href="/downloads/41223228 hw-2.7z">/downloads/41223228 hw-2.7z</a></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/1JSt5m3vZr0" width="560"></iframe></p>
-<h2>HW3</h2>
+<p><a href="/downloads/41223228hw2 max.7z">/downloads/41223228hw2 max.7z</a></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/1JSt5m3vZr0" width="560"></iframe>過程</p>
+<p><strong data-end="427" data-start="408">加入 Robot 主體與控制器</strong>：使用 <code data-end="447" data-start="437">Robot </code>作為整體機構的容器。指定控制器為 <code data-end="488" data-start="471">"my_controller"</code>，用於主動桿旋轉控制。</p>
+<p><strong data-end="526" data-start="504">加入 HingeJoint 層級結構</strong>：第一層 HingeJoint 為主動桿，加入 <code data-end="573" data-start="556">RotationalMotor</code> 作為驅動源。接續的 HingeJoint（共四層）構成完整的四連桿鏈。</p>
+<p><strong data-end="648" data-start="620">每個連桿為 Solid 包含 Mesh 外部檔案</strong>：每個 Solid 使用一個 <code data-end="676" data-start="669">Shape</code> + <code data-end="685" data-start="679">Mesh</code> 引用對應的 <code data-end="698" data-start="692">.obj</code>。每段 Solid 皆設有 <code data-end="734" data-start="718">boundingObject</code> 與 <code data-end="746" data-start="737">physics</code>，以啟用碰撞與物理模擬。</p>
+<p><strong data-end="790" data-start="763">設置 HingeJointParameters</strong>：每一層 joint 的 <code data-end="815" data-start="809">axis</code> 設為 <code data-end="830" data-start="819">(0, 0, 1)</code>，表示繞 z 軸旋轉。使用 <code data-end="858" data-start="850">anchor</code> 精確控制旋轉中心的相對位置（如 <code data-end="888" data-start="875">(0, 0.4, 0)</code>、<code data-end="910" data-start="889">(0.4922, 0.7581, 0)</code>）。</p>
+<p><strong data-end="940" data-start="917">結尾使用 SolidReference</strong>：最後一段連桿（第四 joint）使用 <code data-end="982" data-start="966">SolidReference</code> 指向環境中的一個靜態 Solid，完成機構的閉合結構。</p>
+<p><strong data-end="1036" data-start="1015">加入底座 Solid 作為固定支撐</strong>：<code data-end="1048" data-start="1043">底座1</code> 與 <code data-end="1056" data-start="1051">底座2</code> 分別引入 part_1 與 part_5.obj，作為支撐與起始點。</p>
+<p>心得</p>
+<p>相較於hw1，用obj方便了很多，節省很多事，練習還是比較少，在接好後還是會有問題出現，大部分的時間都在排錯，像是開錯物理性質，碰撞體積沒有開之類的。</p>
+<p></p>
+<p></p><h2>HW3</h2>
 <p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
 <p><span style="background-color: #ffff00;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/sBF3YU7bv2c" width="560"></iframe></span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW3 - 41223228</p>
 <p><a href="/downloads/hw3.7z">/downloads/hw3.7z</a>零件檔</p>
 <p>心得</p>
 <p>在模擬的時候，不小心按到存檔，原本存好的位置全部跑掉了，因禍得福發現在higejintparameters→的position是控制機械作動的位子，重新更改過後也順利歸為，籃筐的地方要重新載入一個robot→mesh開啟籃筐的外形和碰撞體積這可以讓球打到籃筐後反彈。</p>
-<p>→</p><h1>Midterm</h1>
+<p>過程 </p>
+<p>使用老師給的零件圖尺寸，利用<span>solvespace組裝轉出stl檔，stl檔利用老師的py檔轉成obj供webots使用</span></p>
+<p><span>打開webots 開起一個robot群組 在robot的children裡建立三個子群組solid當base 兩個hingejoint 一個當joint1檔連桿之間的定位和鎖固，一個當joint4讓連桿的群組和base的另一個軸連接。</span></p>
+<p><span>在joint1裡建立higejintparameters和solid 在solid裡開啟children建立cadshape用來開啟桿一的外形，再從solid裡開啟mesh開啟桿一的碰撞體積，在開啟phyaixs，開啟桿子的物理性質，讓馬達傳動時會跟著一起運動，在回到joint1的device裡開啟馬達。joint1的higejintparameters是控制joint1軸的位子以及角度，需要特別注意。</span></p>
+<p>後續一直到<span>joint4都是無限套娃除了馬達不用開其他都一樣，在最後joint4鏈接base的時候要特別注意使用的是solidreference鏈接桿3，要注意的是桿三要取名字。</span></p><h1>Midterm</h1>
 <p>本課程所繳交的期中成績為學員自評之學習期望成績.</p>
 <p>期中考週的自評期望成績繳交流程:</p>
 <ol>
